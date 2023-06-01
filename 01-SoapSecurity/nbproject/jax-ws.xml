@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
+  <services>
+    <service name="UserService">
+      <implementation-class>com.eduardo.web.UserService</implementation-class>
+    </service>
+  </services>
+  <clients>
+  </clients>
+</jax-ws>
