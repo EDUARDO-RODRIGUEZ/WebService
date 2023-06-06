@@ -1,7 +1,9 @@
 package com.eduardo.app.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,8 +14,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "banco")
-public class Banco {
+@Table(name = "tipo_cuenta")
+@Getter
+@Setter
+public class TipoCuentaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +26,10 @@ public class Banco {
     @Column
     private String nombre;
 
-    @OneToMany(mappedBy = "banco", fetch = FetchType.LAZY)
-    private List<Cuenta> cuentas;
+    @Column
+    private String descripcion;
+
+    @OneToMany(mappedBy = "tipoCuenta", fetch = FetchType.LAZY)
+    private List<CuentaEntity> cuentas;
 
 }

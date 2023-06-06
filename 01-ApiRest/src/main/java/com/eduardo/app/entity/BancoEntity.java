@@ -1,7 +1,8 @@
 package com.eduardo.app.entity;
 
+import lombok.*;
+
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,8 +13,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tipo_moneda")
-public class TipoMoneda {
+@Table(name = "banco")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class BancoEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +27,7 @@ public class TipoMoneda {
     @Column
     private String nombre;
 
-    @OneToMany(mappedBy = "tipoMoneda", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Movimiento> movimientos;
+    @OneToMany(mappedBy = "banco", fetch = FetchType.LAZY)
+    private List<CuentaEntity> cuentas;
 
 }

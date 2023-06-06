@@ -19,21 +19,21 @@ public class JwtService {
 
     public Optional<String> validateToken(String token) {
         try {
-            String email = Jwts.parser().setSigningKey(JWT_SECRET).parseClaimsJws(token).getBody().getSubject();
-            return Optional.of(email);
+            String nroAccount = Jwts.parser().setSigningKey(JWT_SECRET).parseClaimsJws(token).getBody().getSubject();
+            return Optional.of(nroAccount);
         } catch (Exception e) {
             return Optional.empty();
         }
     }
 
-    public String generateToken(String email) {
+    public String generateToken(String nroAccount) {
         Date now = new Date();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(now);
         calendar.add(calendar.HOUR, JWT_EXPIRE);
         Date expire = calendar.getTime();
         String jwToken = Jwts.builder()
-                .setSubject(email)
+                .setSubject(nroAccount)
                 .setIssuedAt(now)
                 .setExpiration(expire)
                 .signWith(SignatureAlgorithm.HS256, JWT_SECRET)

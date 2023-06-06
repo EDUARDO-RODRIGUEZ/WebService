@@ -1,28 +1,28 @@
 package com.eduardo.app.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.List;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.annotation.PostConstruct;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "cliente")
-public class Cliente {
-
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class ClienteEntity {
     @Id
     @Column(name = "ci", unique = true)
     private String ci;
-
     @Column
     private String nombre;
-
     @Column
     private String apellido;
-
     @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
-    private List<Cuenta> cuentas;
-
+    private List<CuentaEntity> cuentas;
 }

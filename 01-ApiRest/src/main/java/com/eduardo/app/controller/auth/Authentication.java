@@ -1,11 +1,13 @@
 package com.eduardo.app.controller.auth;
 
+import com.eduardo.app.component.ApiResponse;
+import com.eduardo.app.component.SuccesResponse;
 import com.eduardo.app.constant.RestRequestMapping;
-import com.eduardo.app.dto.LoginDto;
+import com.eduardo.app.dto.request.LoginDtoRequest;
 import com.eduardo.app.service.security.JwtService;
-import java.util.HashMap;
-import java.util.Map;
+
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,21 +21,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = RestRequestMapping.AUTHENTICATION)
 public class Authentication {
-
+    @Autowired
+    private SuccesResponse succesResponse;
     @Autowired
     private JwtService jwtService;
-
     @Autowired
     private AuthenticationManager authenticationManager;
 
     @PostMapping(path = "/login")
-    public ResponseEntity<?> login(@Valid @RequestBody LoginDto loginDto) {
-        Map<String, Object> response = new HashMap();
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getEmail(), loginDto.getPassword()));
-        String token = jwtService.generateToken(loginDto.getEmail());
-        response.put("ok", true);
-        response.put("token", token);
-        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+    public ResponseEntity<ApiResponse> login(@Valid @RequestBody LoginDtoRequest loginDtoRequest) {
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDtoRequest.getNroAccount(), loginDtoRequest.getPasswordAccount()));
+        String token = jwtService.generateToken(loginDtoRequest.getNroAccount());
+        return ResponseEntity.status(HttpStatus.OK).body(succesResponse.createSuccessResponse("token", token));
     }
-
 }

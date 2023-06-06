@@ -1,5 +1,7 @@
 package com.eduardo.app.entity;
 
+import lombok.*;
+
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +15,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "movimiento")
-public class Movimiento {
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class MovimientoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,11 +33,11 @@ public class Movimiento {
     private Date fecha;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "tipo_moneda")
-    private TipoMoneda tipoMoneda;
+    @JoinColumn(name = "tipo_movimiento")
+    private TipoMovimientoEntity tipoMovimiento;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cuenta_nro")
-    private Cuenta cuenta;
+    private CuentaEntity cuenta;
 
 }
