@@ -23,6 +23,8 @@ public class ClienteEntity {
     private String nombre;
     @Column
     private String apellido;
+    @Column
+    private String password;
     @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
     private List<CuentaEntity> cuentas;
 }

@@ -7,7 +7,7 @@ import javax.validation.constraints.*;
 
 @Getter
 @Setter
-public class MovimientoDtoRequest {
+public class MovimientoRetiroDtoRequest {
     @NotBlank
     @Size(min = 16, max = 16)
     private String nroAccount;

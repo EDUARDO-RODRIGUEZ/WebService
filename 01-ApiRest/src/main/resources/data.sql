@@ -1,7 +1,7 @@
 --Load Data Client
-insert into cliente(ci,nombre,apellido) values('12345678SC','eduardo','rodriguez');
-insert into cliente(ci,nombre,apellido) values('87654321SC','jose','diaz');
-insert into cliente(ci,nombre,apellido) values('87651234LP','david','hernandez');
+insert into cliente(ci,password,nombre,apellido) values('12345678SC','$2a$10$uS7OMvE1jpFtFeYNADvSvun1Ovb2SZYP//4qKJfNcbww078CGl3P6','eduardo','rodriguez');
+insert into cliente(ci,password,nombre,apellido) values('87654321CB','$2a$10$uS7OMvE1jpFtFeYNADvSvun1Ovb2SZYP//4qKJfNcbww078CGl3P6','jose','diaz');
+insert into cliente(ci,password,nombre,apellido) values('87651234LP','$2a$10$uS7OMvE1jpFtFeYNADvSvun1Ovb2SZYP//4qKJfNcbww078CGl3P6','david','hernandez');
 
 --load Data Banco
 insert into banco (nombre) values('Banco Mercantil Santa Cruz');
@@ -20,8 +20,8 @@ insert into tipo_movimiento (nombre) values('Retiro');
 --load data Cuenta
 --bcrypt:123 hash
 insert into cuenta (nro,password,banco_id,cliente_ci,tipo_cuenta,saldo) values('1234567899876543','$2a$10$uS7OMvE1jpFtFeYNADvSvun1Ovb2SZYP//4qKJfNcbww078CGl3P6',1,'12345678SC',1,500);
-insert into cuenta (nro,password,banco_id,cliente_ci,tipo_cuenta,saldo) values('2132139883123123','$2a$10$uS7OMvE1jpFtFeYNADvSvun1Ovb2SZYP//4qKJfNcbww078CGl3P6',1,'87654321SC',1,2000);
-insert into cuenta (nro,password,banco_id,cliente_ci,tipo_cuenta,saldo) values('1234567887654321','$2a$10$uS7OMvE1jpFtFeYNADvSvun1Ovb2SZYP//4qKJfNcbww078CGl3P6',2,'87654321SC',1,500);
+insert into cuenta (nro,password,banco_id,cliente_ci,tipo_cuenta,saldo) values('2132139883123123','$2a$10$uS7OMvE1jpFtFeYNADvSvun1Ovb2SZYP//4qKJfNcbww078CGl3P6',1,'87654321CB',1,2000);
+insert into cuenta (nro,password,banco_id,cliente_ci,tipo_cuenta,saldo) values('1234567887654321','$2a$10$uS7OMvE1jpFtFeYNADvSvun1Ovb2SZYP//4qKJfNcbww078CGl3P6',2,'87654321CB',1,500);
 
 --load Data Movimiento
 insert into movimiento (cuenta_nro,fecha,monto,tipo_movimiento) values('1234567899876543','2021-01-01 19:10',500,1);

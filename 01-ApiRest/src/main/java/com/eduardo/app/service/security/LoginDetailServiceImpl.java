@@ -12,8 +12,8 @@ public class LoginDetailServiceImpl implements UserDetailsService {
     @Autowired
     private LoginDetailRepository loginDetailRepository;
     @Override
-    public UserDetails loadUserByUsername(String nroAccount) throws UsernameNotFoundException {
-        return loginDetailRepository.findByNroAccount(nroAccount);
+    public UserDetails loadUserByUsername(String ci) throws UsernameNotFoundException {
+        return loginDetailRepository.findByCi(ci);
     }
 
 }
